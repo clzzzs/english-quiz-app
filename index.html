@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>英语题库刷题系统</title>
+<style>
+  :root {
+    --primary: #4F46E5;
+    --success: #059669;
+    --danger: #DC2626;
+    --warning: #D97706;
+    --bg: #F8FAFC;
+    --card: #FFFFFF;
+    --text: #1E293B;
+    --text-secondary: #64748B;
+    --border: #E2E8F0;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.1),0 1px 2px rgba(0,0,0,0.06);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+
+  /* Header */
+  .header {
+    background: var(--primary);
+    color: white;
+    padding: 16px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(79,70,229,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header h1 { font-size: 18px; font-weight: 600; }
+  .header .btn-back {
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .container { max-width: 700px; margin: 0 auto; padding: 16px; }
+
+  /* Home page */
+  .home-title {
+    text-align: center;
+    padding: 40px 0 24px;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary);
+  }
+  .home-subtitle {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    font-size: 14px;
+  }
+  .mode-cards {
+    display: grid;
+    gap: 16px;
+  }
+  .mode-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .mode-card:active { transform: scale(0.98); }
+  .mode-card.active-card { border-color: var(--primary); }
+  .mode-card .mode-icon { font-size: 40px; margin-bottom: 12px; }
+  .mode-card .mode-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+  .mode-card .mode-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+  .mode-stats {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 16px;
+    box-shadow: var(--shadow);
+  }
+  .mode-stats strong { color: var(--primary); font-size: 16px; }
+
+  /* Question card */
+  .q-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 20px;
+    margin-bottom: 16px;
+  }
+  .q-chapter {
+    font-size: 12px;
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .q-number {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+  }
+  .q-text {
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  .q-text .blank {
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  /* Options */
+  .options { display: flex; flex-direction: column; gap: 10px; }
+  .option {
+    display: flex;
+    align-items: flex-start;
+    padding: 14px 16px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-size: 15px;
+    line-height: 1.5;
+    background: var(--card);
+    gap: 10px;
+  }
+  .option:active { transform: scale(0.99); }
+  .option .opt-label {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--bg);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 13px;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .option:hover { border-color: var(--primary); background: #EEF2FF; }
+  .option.selected { border-color: var(--primary); background: #EEF2FF; }
+  .option.selected .opt-label { background: var(--primary); color: white; }
+  .option.correct { border-color: var(--success); background: #ECFDF5; }
+  .option.correct .opt-label { background: var(--success); color: white; }
+  .option.wrong { border-color: var(--danger); background: #FEF2F2; }
+  .option.wrong .opt-label { background: var(--danger); color: white; }
+  .option.disabled { pointer-events: none; opacity: 0.7; }
+  .option.disabled.correct { opacity: 1; }
+
+  /* Feedback */
+  .feedback {
+    margin-top: 14px;
+    padding: 14px;
+    border-radius: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+    display: none;
+  }
+  .feedback.show { display: block; }
+  .feedback.correct-fb { background: #ECFDF5; color: #065F46; border: 1px solid #A7F3D0; }
+  .feedback.wrong-fb { background: #FEF2F2; color: #991B1B; border: 1px solid #FECACA; }
+  .feedback .fb-title { font-weight: 700; margin-bottom: 4px; }
+  .feedback .fb-answer { font-weight: 600; }
+  .feedback .fb-trans { margin-top: 4px; color: inherit; opacity: 0.8; }
+
+  /* Navigation */
+  .nav-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  .btn {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn-primary { background: var(--primary); color: white; }
+  .btn-outline { background: white; color: var(--primary); border: 2px solid var(--primary); }
+  .btn-success { background: var(--success); color: white; }
+  .btn-danger { background: var(--danger); color: white; }
+  .btn-warning { background: var(--warning); color: white; }
+  .btn:disabled { opacity: 0.5; pointer-events: none; }
+
+  /* Jump input */
+  .jump-area {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+    align-items: center;
+  }
+  .jump-area input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    font-size: 15px;
+    text-align: center;
+  }
+  .jump-area .btn { padding: 12px 20px; flex: 0; }
+
+  /* Progress bar */
+  .progress-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+  .progress-bar {
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    flex: 1;
+    margin: 0 12px;
+    overflow: hidden;
+  }
+  .progress-bar .fill {
+    height: 100%;
+    background: var(--primary);
+    border-radius: 3px;
+    transition: width 0.3s;
+  }
+
+  /* Mode 2: summary at bottom */
+  .mode2-sticky {
+    position: sticky;
+    bottom: 0;
+    background: white;
+    padding: 14px 16px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    border-radius: 16px 16px 0 0;
+    display: flex;
+    gap: 10px;
+    z-index: 50;
+  }
+  .mode2-counter {
+    font-size: 14px;
+    color: var(--text-secondary);
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Result page */
+  .result-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    padding: 32px 24px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .result-score {
+    font-size: 64px;
+    font-weight: 800;
+    margin: 16px 0;
+  }
+  .result-grade { font-size: 18px; margin-bottom: 16px; }
+  .result-detail { text-align: left; margin-top: 20px; }
+  .result-item {
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .result-item.correct-r { background: #ECFDF5; }
+  .result-item.wrong-r { background: #FEF2F2; }
+  .result-item .ri-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+
+  /* Hide sections */
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* Responsive */
+  @media (max-width: 400px) {
+    .container { padding: 12px; }
+    .q-text { font-size: 15px; }
+    .option { font-size: 14px; padding: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HOME PAGE ============ -->
+<section id="home" class="section active">
+  <div class="container">
+    <div class="home-title">英语题库刷题系统</div>
+    <div class="home-subtitle">涵盖中国文化、哲学、文学等领域 · 共 161 题</div>
+    <div class="mode-cards">
+      <div class="mode-card" onclick="startMode1()">
+        <div class="mode-icon">📝</div>
+        <div class="mode-title">模式一：逐题练习</div>
+        <div class="mode-desc">一道一道刷，选择后立即判断对错<br>显示正确答案与中文翻译<br>随时跳转到任意题目</div>
+      </div>
+      <div class="mode-card" onclick="startMode2()">
+        <div class="mode-icon">🏆</div>
+        <div class="mode-title">模式二：随机40题</div>
+        <div class="mode-desc">随机抽取40道题 · 全部答完后提交<br>一次性出分 + 错题回顾<br>每轮重新随机抽题</div>
+      </div>
+    </div>
+    <div class="mode-stats">
+      题库共 <strong>161</strong> 道选择题，所有题目已从填空题/翻译题转换为四选一
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODE 1: SINGLE QUESTION ============ -->
+<section id="mode1" class="section">
+  <div class="header">
+    <button class="btn-back" onclick="goHome()">← 返回</button>
+    <h1>逐题练习</h1>
+    <span style="font-size:13px;opacity:0.9" id="m1-counter"></span>
+  </div>
+  <div class="container">
+    <div class="progress-wrap">
+      <span id="m1-correct-count"></span>
+      <div class="progress-bar"><div class="fill" id="m1-progress-fill" style="width:0%"></div></div>
+      <span id="m1-total-count"></span>
+    </div>
+    <div id="m1-question-area"></div>
+    <div id="m1-feedback" class="feedback"></div>
+    <div class="nav-buttons">
+      <button class="btn btn-outline" onclick="m1Prev()" id="m1-prev-btn">上一题</button>
+      <button class="btn btn-primary" onclick="m1Next()" id="m1-next-btn">下一题</button>
+    </div>
+    <div class="jump-area">
+      <span style="font-size:13px;color:var(--text-secondary)">跳转到:</span>
+      <input type="number" id="m1-jump-input" min="1" placeholder="题号" onkeydown="if(event.key==='Enter')m1Jump()">
+      <button class="btn btn-outline" onclick="m1Jump()" style="padding:12px 16px">跳转</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MODE 2: 40 RANDOM QUESTIONS ============ -->
+<section id="mode2" class="section">
+  <div class="header">
+    <button class="btn-back" onclick="goHome()">← 返回</button>
+    <h1>随机40题</h1>
+    <span style="font-size:13px;opacity:0.9" id="m2-header-count"></span>
+  </div>
+  <div class="container" id="m2-container"></div>
+</section>
+
+<!-- ============ MODE 2 RESULT ============ -->
+<section id="result" class="section">
+  <div class="header">
+    <button class="btn-back" onclick="goHome()">← 返回</button>
+    <h1>结果</h1>
+    <span style="font-size:13px;opacity:0.9"></span>
+  </div>
+  <div class="container" id="result-area"></div>
+</section>
+
+<script src="questions.js"></script>
+<script>
+// ============ APP STATE ============
+let currentMode = null;
+let m1Index = 0;
+let m1Answers = {}; // { index: selectedOptionIndex }
+let m2Questions = [];
+let m2Answers = {}; // { questionId: selectedOptionIndex }
+let m2Submitted = false;
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function goHome() {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById('home').classList.add('active');
+  currentMode = null;
+  window.scrollTo(0, 0);
+}
+
+// ============ MODE 1 ============
+function startMode1() {
+  currentMode = 1;
+  m1Index = 0;
+  m1Answers = {};
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById('mode1').classList.add('active');
+  window.scrollTo(0, 0);
+  renderM1();
+  updateM1Stats();
+}
+
+function renderM1() {
+  const q = ALL_QUESTIONS[m1Index];
+  const area = document.getElementById('m1-question-area');
+  const feedback = document.getElementById('m1-feedback');
+  feedback.classList.remove('show', 'correct-fb', 'wrong-fb');
+
+  const selected = m1Answers[m1Index];
+  const answered = m1Answers[m1Index] !== undefined;
+
+  let html = `<div class="q-card">
+    <div class="q-chapter">${q.chapter}</div>
+    <div class="q-number">第 ${m1Index + 1} / ${ALL_QUESTIONS.length} 题</div>
+    <div class="q-text">${highlightBlank(q.question)}</div>
+    <div class="options">`;
+
+  q.options.forEach((opt, i) => {
+    let cls = 'option';
+    if (answered && i === q.answer) cls += ' correct';
+    if (answered && i === selected && i !== q.answer) cls += ' wrong';
+    if (i === selected && !answered) cls += ' selected';
+    if (answered) cls += ' disabled';
+    const labels = ['A', 'B', 'C', 'D'];
+    html += `<div class="${cls}" onclick="${answered ? '' : `m1Select(${i})`}">
+      <span class="opt-label">${labels[i]}</span>
+      <span>${opt}</span>
+    </div>`;
+  });
+
+  html += '</div></div>';
+  area.innerHTML = html;
+
+  // Show feedback if answered
+  if (answered) {
+    showM1Feedback(q, selected);
+  }
+
+  // Update buttons
+  document.getElementById('m1-prev-btn').disabled = m1Index === 0;
+  const isLast = m1Index === ALL_QUESTIONS.length - 1;
+  document.getElementById('m1-next-btn').textContent = isLast ? '完成' : '下一题';
+  document.getElementById('m1-counter').textContent = `${m1Index + 1}/${ALL_QUESTIONS.length}`;
+  document.getElementById('m1-jump-input').value = m1Index + 1;
+  document.getElementById('m1-jump-input').max = ALL_QUESTIONS.length;
+}
+
+function highlightBlank(text) {
+  // Highlight the blank (______) in the question text
+  return text.replace(/______/g, '<span class="blank">______</span>');
+}
+
+function m1Select(optIndex) {
+  if (m1Answers[m1Index] !== undefined) return;
+  m1Answers[m1Index] = optIndex;
+  renderM1();
+  updateM1Stats();
+}
+
+function showM1Feedback(q, selected) {
+  const fb = document.getElementById('m1-feedback');
+  const labels = ['A', 'B', 'C', 'D'];
+  const isCorrect = selected === q.answer;
+
+  fb.className = 'feedback show ' + (isCorrect ? 'correct-fb' : 'wrong-fb');
+  fb.innerHTML = `
+    <div class="fb-title">${isCorrect ? '✅ 回答正确！' : '❌ 回答错误'}</div>
+    <div>正确答案：<span class="fb-answer">${labels[q.answer]}. ${q.options[q.answer]}</span></div>
+    <div class="fb-trans">💡 ${q.translation}</div>
+  `;
+}
+
+function m1Prev() {
+  if (m1Index > 0) {
+    m1Index--;
+    renderM1();
+    updateM1Stats();
+    window.scrollTo(0, 80);
+  }
+}
+
+function m1Next() {
+  if (m1Index === ALL_QUESTIONS.length - 1) {
+    // Show summary
+    const total = Object.keys(m1Answers).length;
+    const correct = Object.entries(m1Answers).filter(([idx, ans]) => ans === ALL_QUESTIONS[parseInt(idx)].answer).length;
+    alert(`练习完成！\n已答：${total} / ${ALL_QUESTIONS.length} 题\n正确：${correct} / ${total}\n正确率：${total > 0 ? Math.round(correct/total*100) : 0}%`);
+    return;
+  }
+  if (m1Index < ALL_QUESTIONS.length - 1) {
+    m1Index++;
+    renderM1();
+    updateM1Stats();
+    window.scrollTo(0, 80);
+  }
+}
+
+function m1Jump() {
+  const val = parseInt(document.getElementById('m1-jump-input').value);
+  if (val >= 1 && val <= ALL_QUESTIONS.length) {
+    m1Index = val - 1;
+    renderM1();
+    updateM1Stats();
+    window.scrollTo(0, 80);
+  }
+}
+
+function updateM1Stats() {
+  const total = Object.keys(m1Answers).length;
+  const correct = Object.entries(m1Answers).filter(([idx, ans]) => ans === ALL_QUESTIONS[parseInt(idx)].answer).length;
+  document.getElementById('m1-correct-count').textContent = `✅ ${correct}`;
+  document.getElementById('m1-total-count').textContent = `共答 ${total} 题`;
+  document.getElementById('m1-progress-fill').style.width = (total / ALL_QUESTIONS.length * 100) + '%';
+}
+
+// ============ MODE 2 ============
+function startMode2() {
+  currentMode = 2;
+  m2Answers = {};
+  m2Submitted = false;
+  m2Questions = shuffle(ALL_QUESTIONS).slice(0, 40);
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById('mode2').classList.add('active');
+  window.scrollTo(0, 0);
+  renderM2();
+}
+
+function renderM2() {
+  const container = document.getElementById('m2-container');
+  document.getElementById('m2-header-count').textContent = `已答 ${Object.keys(m2Answers).length}/40`;
+
+  let html = '<div style="margin-bottom:100px">';
+  html += '<p style="color:var(--text-secondary);font-size:14px;margin-bottom:16px">请完成以下40道随机选择题，完成后点击底部"提交"按钮查看结果。</p>';
+
+  m2Questions.forEach((q, idx) => {
+    const selected = m2Answers[q.id];
+    html += `<div class="q-card" id="m2-q-${idx}">
+      <div class="q-chapter">${q.chapter}</div>
+      <div class="q-number">第 ${idx + 1} / 40 题</div>
+      <div class="q-text">${highlightBlank(q.question)}</div>
+      <div class="options">`;
+
+    q.options.forEach((opt, i) => {
+      let cls = 'option';
+      if (i === selected) cls += ' selected';
+      const labels = ['A', 'B', 'C', 'D'];
+      html += `<div class="${cls}" onclick="m2Select(${idx}, ${i})">
+        <span class="opt-label">${labels[i]}</span>
+        <span>${opt}</span>
+      </div>`;
+    });
+
+    html += '</div></div>';
+  });
+
+  html += '</div>';
+  container.innerHTML = html;
+
+  // Add sticky submit button
+  const sticky = document.createElement('div');
+  sticky.className = 'mode2-sticky';
+  const answered = Object.keys(m2Answers).length;
+  sticky.innerHTML = `
+    <div class="mode2-counter">📝 已答 ${answered} / 40 题</div>
+    <button class="btn btn-success" onclick="m2Submit()" ${answered < 40 ? '' : ''} style="flex: none; padding: 14px 32px;">
+      ${answered === 40 ? '提交答案' : `还差 ${40 - answered} 题`}
+    </button>
+  `;
+  sticky.id = 'm2-sticky';
+  container.appendChild(sticky);
+}
+
+function m2Select(qIndex, optIndex) {
+  if (m2Submitted) return;
+  m2Answers[m2Questions[qIndex].id] = optIndex;
+  // Re-render just the options for that question
+  const qCard = document.getElementById(`m2-q-${qIndex}`);
+  const opts = qCard.querySelectorAll('.option');
+  opts.forEach((opt, i) => {
+    opt.classList.toggle('selected', i === optIndex);
+  });
+  // Update sticky
+  const answered = Object.keys(m2Answers).length;
+  const sticky = document.getElementById('m2-sticky');
+  if (sticky) {
+    sticky.querySelector('.mode2-counter').textContent = `📝 已答 ${answered} / 40 题`;
+    const btn = sticky.querySelector('.btn');
+    btn.textContent = answered === 40 ? '提交答案' : `还差 ${40 - answered} 题`;
+    if (answered === 40) btn.classList.add('btn-success');
+  }
+  document.getElementById('m2-header-count').textContent = `已答 ${answered}/40`;
+  // Scroll to next unanswered
+  if (answered < 40) {
+    const nextUnanswered = m2Questions.findIndex((q, i) => !(q.id in m2Answers) && i > qIndex);
+    if (nextUnanswered >= 0) {
+      document.getElementById(`m2-q-${nextUnanswered}`).scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }
+}
+
+function m2Submit() {
+  const answered = Object.keys(m2Answers).length;
+  if (answered < 40) {
+    alert(`还有 ${40 - answered} 道题未作答，请全部完成后再提交。`);
+    return;
+  }
+  m2Submitted = true;
+  let correct = 0;
+  const results = [];
+
+  m2Questions.forEach((q, idx) => {
+    const selected = m2Answers[q.id];
+    const isCorrect = selected === q.answer;
+    if (isCorrect) correct++;
+    results.push({ q, idx, selected, isCorrect });
+  });
+
+  // Show result page
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById('result').classList.add('active');
+  window.scrollTo(0, 0);
+
+  const score = Math.round(correct / 40 * 100);
+  let grade, gradeColor;
+  if (score >= 90) { grade = '优秀 🌟'; gradeColor = 'var(--success)'; }
+  else if (score >= 75) { grade = '良好 👍'; gradeColor = 'var(--primary)'; }
+  else if (score >= 60) { grade = '及格 📚'; gradeColor = 'var(--warning)'; }
+  else { grade = '继续努力 💪'; gradeColor = 'var(--danger)'; }
+
+  const area = document.getElementById('result-area');
+  const labels = ['A', 'B', 'C', 'D'];
+
+  let html = `
+    <div class="result-card">
+      <div style="font-size:16px;color:var(--text-secondary)">你的得分</div>
+      <div class="result-score" style="color:${gradeColor}">${score}</div>
+      <div class="result-grade" style="color:${gradeColor}">${grade}</div>
+      <div style="font-size:14px;color:var(--text-secondary)">正确 ${correct} / 40 题</div>
+      <button class="btn btn-primary" onclick="startMode2()" style="margin-top:20px">再来一轮</button>
+      <button class="btn btn-outline" onclick="goHome()" style="margin-top:10px">返回首页</button>
+    </div>
+    <h3 style="margin:16px 0 12px">📋 错题回顾</h3>
+  `;
+
+  results.forEach(r => {
+    const cls = r.isCorrect ? 'correct-r' : 'wrong-r';
+    html += `<div class="result-item ${cls}">
+      <span class="ri-icon">${r.isCorrect ? '✅' : '❌'}</span>
+      <div>
+        <div style="font-weight:600;margin-bottom:4px">${r.idx + 1}. ${highlightBlankShort(r.q.question)}</div>
+        <div style="font-size:13px;color:var(--text-secondary)">
+          你的答案：${labels[r.selected]}. ${r.q.options[r.selected]}
+          ${!r.isCorrect ? `<br>正确答案：${labels[r.q.answer]}. ${r.q.options[r.q.answer]}` : ''}
+        </div>
+        <div style="font-size:12px;color:var(--text-secondary);margin-top:2px">💡 ${r.q.translation}</div>
+      </div>
+    </div>`;
+  });
+
+  area.innerHTML = html;
+}
+
+function highlightBlankShort(text) {
+  return text.replace(/______/g, '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>');
+}
+</script>
+</body>
+</html>
