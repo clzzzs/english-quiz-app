@@ -56,6 +56,13 @@
   .container { max-width: 700px; margin: 0 auto; padding: 16px; }
 
   /* Home page */
+  .section-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+    padding-left: 4px;
+  }
   .home-title {
     text-align: center;
     padding: 40px 0 24px;
@@ -130,6 +137,18 @@
   .q-text .blank {
     color: var(--primary);
     font-weight: 700;
+  }
+
+  /* Question translation */
+  .q-translation {
+    margin-top: 12px;
+    padding: 10px 14px;
+    background: #FFF8E1;
+    border-left: 3px solid #FFA726;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #6D4C41;
+    line-height: 1.6;
   }
 
   /* Options */
@@ -319,20 +338,18 @@
   <div class="container">
     <div class="home-title">英语题库刷题系统</div>
     <div class="home-subtitle">涵盖中国文化、哲学、文学等领域 · 共 161 题</div>
+    <div class="section-label">📂 分块练习</div>
+    <div class="mode-cards" id="section-cards"></div>
+    <div class="section-label" style="margin-top:24px">🏆 综合测试</div>
     <div class="mode-cards">
-      <div class="mode-card" onclick="startMode1()">
-        <div class="mode-icon">📝</div>
-        <div class="mode-title">模式一：逐题练习</div>
-        <div class="mode-desc">一道一道刷，选择后立即判断对错<br>显示正确答案与中文翻译<br>随时跳转到任意题目</div>
-      </div>
       <div class="mode-card" onclick="startMode2()">
-        <div class="mode-icon">🏆</div>
-        <div class="mode-title">模式二：随机40题</div>
-        <div class="mode-desc">随机抽取40道题 · 全部答完后提交<br>一次性出分 + 错题回顾<br>每轮重新随机抽题</div>
+        <div class="mode-icon">🎯</div>
+        <div class="mode-title">随机40题</div>
+        <div class="mode-desc">从全部161题中随机抽取40道<br>全部答完后统一提交出分<br>含完整错题回顾 · 每轮重新抽题</div>
       </div>
     </div>
     <div class="mode-stats">
-      题库共 <strong>161</strong> 道选择题，所有题目已从填空题/翻译题转换为四选一
+      题库共 <strong>161</strong> 道选择题，分为5个模块，支持分块练习或综合测试
     </div>
   </div>
 </section>
@@ -341,7 +358,7 @@
 <section id="mode1" class="section">
   <div class="header">
     <button class="btn-back" onclick="goHome()">← 返回</button>
-    <h1>逐题练习</h1>
+    <h1 id="m1-mode-title">逐题练习</h1>
     <span style="font-size:13px;opacity:0.9" id="m1-counter"></span>
   </div>
   <div class="container">
@@ -386,8 +403,49 @@
 
 <script src="questions.js"></script>
 <script>
+// ============ QUESTION GROUPS ============
+const QUESTION_GROUPS = [
+  {
+    name: '儒家思想',
+    icon: '📖',
+    desc: '孔子与儒家思想',
+    ids: [1,2,3,4,5,6,7,8,9,10, 107,108,109,110,111,112,113,114,115,116]
+  },
+  {
+    name: '道家思想',
+    icon: '☯️',
+    desc: '老子与道家思想',
+    ids: [11,12,13,14,15,16,17,18,19,20, 117,118,119,120,121,122,123,124,125,126]
+  },
+  {
+    name: '诸子百家',
+    icon: '🏛️',
+    desc: '孟子、庄子、墨子、法家等',
+    ids: [21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38, 127,128,129,130,131,132,133,134,135,136]
+  },
+  {
+    name: '中国文学',
+    icon: '📚',
+    desc: '诗词、小说、散文、戏剧',
+    ids: [39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83, 137,138,139,140,141,142,143,144,145,146]
+  },
+  {
+    name: '艺术与生活',
+    icon: '🎨',
+    desc: '艺术、节日、饮食与综合',
+    ids: [84,85,86,87,88,89,90,91,92,93, 94,95,96,97,98,99,100, 101,102,103,104,105,106, 147,148,149,150,151,152,153,154,155,156,157,158,159,160,161]
+  }
+];
+
+function getQuestionsByIds(ids) {
+  const idSet = new Set(ids);
+  return ALL_QUESTIONS.filter(q => idSet.has(q.id));
+}
+</script>
+<script>
 // ============ APP STATE ============
 let currentMode = null;
+let m1Questions = []; // questions for current section
 let m1Index = 0;
 let m1Answers = {}; // { index: selectedOptionIndex }
 let m2Questions = [];
@@ -411,19 +469,21 @@ function goHome() {
 }
 
 // ============ MODE 1 ============
-function startMode1() {
+function startMode1(questions, title) {
   currentMode = 1;
   m1Index = 0;
   m1Answers = {};
+  m1Questions = questions || ALL_QUESTIONS;
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.getElementById('mode1').classList.add('active');
+  document.getElementById('m1-mode-title').textContent = title || '逐题练习';
   window.scrollTo(0, 0);
   renderM1();
   updateM1Stats();
 }
 
 function renderM1() {
-  const q = ALL_QUESTIONS[m1Index];
+  const q = m1Questions[m1Index];
   const area = document.getElementById('m1-question-area');
   const feedback = document.getElementById('m1-feedback');
   feedback.classList.remove('show', 'correct-fb', 'wrong-fb');
@@ -433,7 +493,7 @@ function renderM1() {
 
   let html = `<div class="q-card">
     <div class="q-chapter">${q.chapter}</div>
-    <div class="q-number">第 ${m1Index + 1} / ${ALL_QUESTIONS.length} 题</div>
+    <div class="q-number">第 ${m1Index + 1} / ${m1Questions.length} 题</div>
     <div class="q-text">${highlightBlank(q.question)}</div>
     <div class="options">`;
 
@@ -450,7 +510,12 @@ function renderM1() {
     </div>`;
   });
 
-  html += '</div></div>';
+  html += '</div>';
+  // 题干中文翻译
+  if (q.questionTranslation) {
+    html += `<div class="q-translation">💡 题干翻译：${q.questionTranslation}</div>`;
+  }
+  html += '</div>';
   area.innerHTML = html;
 
   // Show feedback if answered
@@ -460,11 +525,11 @@ function renderM1() {
 
   // Update buttons
   document.getElementById('m1-prev-btn').disabled = m1Index === 0;
-  const isLast = m1Index === ALL_QUESTIONS.length - 1;
+  const isLast = m1Index === m1Questions.length - 1;
   document.getElementById('m1-next-btn').textContent = isLast ? '完成' : '下一题';
-  document.getElementById('m1-counter').textContent = `${m1Index + 1}/${ALL_QUESTIONS.length}`;
+  document.getElementById('m1-counter').textContent = `${m1Index + 1}/${m1Questions.length}`;
   document.getElementById('m1-jump-input').value = m1Index + 1;
-  document.getElementById('m1-jump-input').max = ALL_QUESTIONS.length;
+  document.getElementById('m1-jump-input').max = m1Questions.length;
 }
 
 function highlightBlank(text) {
@@ -502,14 +567,14 @@ function m1Prev() {
 }
 
 function m1Next() {
-  if (m1Index === ALL_QUESTIONS.length - 1) {
+  if (m1Index === m1Questions.length - 1) {
     // Show summary
     const total = Object.keys(m1Answers).length;
-    const correct = Object.entries(m1Answers).filter(([idx, ans]) => ans === ALL_QUESTIONS[parseInt(idx)].answer).length;
-    alert(`练习完成！\n已答：${total} / ${ALL_QUESTIONS.length} 题\n正确：${correct} / ${total}\n正确率：${total > 0 ? Math.round(correct/total*100) : 0}%`);
+    const correct = Object.entries(m1Answers).filter(([idx, ans]) => ans === m1Questions[parseInt(idx)].answer).length;
+    alert(`练习完成！\n已答：${total} / ${m1Questions.length} 题\n正确：${correct} / ${total}\n正确率：${total > 0 ? Math.round(correct/total*100) : 0}%`);
     return;
   }
-  if (m1Index < ALL_QUESTIONS.length - 1) {
+  if (m1Index < m1Questions.length - 1) {
     m1Index++;
     renderM1();
     updateM1Stats();
@@ -519,7 +584,7 @@ function m1Next() {
 
 function m1Jump() {
   const val = parseInt(document.getElementById('m1-jump-input').value);
-  if (val >= 1 && val <= ALL_QUESTIONS.length) {
+  if (val >= 1 && val <= m1Questions.length) {
     m1Index = val - 1;
     renderM1();
     updateM1Stats();
@@ -529,10 +594,10 @@ function m1Jump() {
 
 function updateM1Stats() {
   const total = Object.keys(m1Answers).length;
-  const correct = Object.entries(m1Answers).filter(([idx, ans]) => ans === ALL_QUESTIONS[parseInt(idx)].answer).length;
+  const correct = Object.entries(m1Answers).filter(([idx, ans]) => ans === m1Questions[parseInt(idx)].answer).length;
   document.getElementById('m1-correct-count').textContent = `✅ ${correct}`;
   document.getElementById('m1-total-count').textContent = `共答 ${total} 题`;
-  document.getElementById('m1-progress-fill').style.width = (total / ALL_QUESTIONS.length * 100) + '%';
+  document.getElementById('m1-progress-fill').style.width = (total / m1Questions.length * 100) + '%';
 }
 
 // ============ MODE 2 ============
@@ -572,7 +637,12 @@ function renderM2() {
       </div>`;
     });
 
-    html += '</div></div>';
+    html += '</div>';
+    // 题干中文翻译
+    if (q.questionTranslation) {
+      html += `<div class="q-translation">💡 题干翻译：${q.questionTranslation}</div>`;
+    }
+    html += '</div>';
   });
 
   html += '</div>';
@@ -675,6 +745,7 @@ function m2Submit() {
           ${!r.isCorrect ? `<br>正确答案：${labels[r.q.answer]}. ${r.q.options[r.q.answer]}` : ''}
         </div>
         <div style="font-size:12px;color:var(--text-secondary);margin-top:2px">💡 ${r.q.translation}</div>
+        ${r.q.questionTranslation ? `<div style="font-size:12px;color:var(--text-secondary);margin-top:2px">💡 题干翻译：${r.q.questionTranslation}</div>` : ''}
       </div>
     </div>`;
   });
@@ -685,6 +756,24 @@ function m2Submit() {
 function highlightBlankShort(text) {
   return text.replace(/______/g, '<u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u>');
 }
+
+// ============ RENDER SECTION CARDS ============
+function renderSectionCards() {
+  const container = document.getElementById('section-cards');
+  let html = '';
+  QUESTION_GROUPS.forEach((group, idx) => {
+    const questions = getQuestionsByIds(group.ids);
+    html += `<div class="mode-card" onclick="startMode1(getQuestionsByIds([${group.ids.join(',')}]), '${group.name}')">
+      <div class="mode-icon">${group.icon}</div>
+      <div class="mode-title">${group.name}</div>
+      <div class="mode-desc">${group.desc} · 共 ${questions.length} 题</div>
+    </div>`;
+  });
+  container.innerHTML = html;
+}
+
+// Init
+renderSectionCards();
 </script>
 </body>
 </html>
