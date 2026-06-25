@@ -11,7 +11,8 @@ const ALL_QUESTIONS = [
     question: "As a great thinker, statesman, educator and the ______ of Confucianism, Confucius is an ancient sage to the Chinese people.",
     options: ["founder", "follower", "reformer", "translator"],
     answer: 0,
-    translation: "创始人"
+    translation: "创始人",
+    questionTranslation: "作为伟大的思想家、政治家、教育家和儒家学派的______，孔子是中华民族的古代圣贤。",
   },
   {
     id: 2,
@@ -20,7 +21,8 @@ const ALL_QUESTIONS = [
     question: "Humanity is the ______ moral principle or the supreme virtue.",
     options: ["basic", "supreme", "secondary", "ordinary"],
     answer: 1,
-    translation: "最高的，至上的"
+    translation: "最高的，至上的",
+    questionTranslation: "仁是______的道德准则，即最高的美德。",
   },
   {
     id: 3,
@@ -29,7 +31,8 @@ const ALL_QUESTIONS = [
     question: "Harmony is a core ______ Confucian principle for dealing with interpersonal relationships and guiding social and political activities.",
     options: ["economic", "military", "ethical", "scientific"],
     answer: 2,
-    translation: "伦理的，道德的"
+    translation: "伦理的，道德的",
+    questionTranslation: "和谐是儒家处理人际关系、指导社会和政治活动的核心______原则。",
   },
   {
     id: 4,
@@ -38,7 +41,8 @@ const ALL_QUESTIONS = [
     question: "As to the way to govern a state, on the one hand, Confucius emphasized the rule by ______ and humane government.",
     options: ["force", "virtue", "wealth", "fear"],
     answer: 1,
-    translation: "美德，德行"
+    translation: "美德，德行",
+    questionTranslation: "关于治国之道，孔子一方面强调以______和仁政治国。",
   },
   {
     id: 5,
@@ -47,7 +51,8 @@ const ALL_QUESTIONS = [
     question: "The ______ method invented by Confucius was nearly one hundred years earlier than the Socratic dialogue.",
     options: ["elicitation", "memorization", "punishment", "deduction"],
     answer: 0,
-    translation: "启发，诱导"
+    translation: "启发，诱导",
+    questionTranslation: "孔子发明的______教学法比苏格拉底式对话早了近一百年。",
   },
 
   // Ch1 Term Translations
@@ -130,7 +135,8 @@ const ALL_QUESTIONS = [
     question: "The book of Lao Zi consists of just about ______ Chinese characters.",
     options: ["5,000", "10,000", "2,000", "8,000"],
     answer: 0,
-    translation: "五千（字）"
+    translation: "五千（字）",
+    questionTranslation: "老子的《道德经》仅由约______个汉字组成。",
   },
   {
     id: 12,
@@ -139,7 +145,8 @@ const ALL_QUESTIONS = [
     question: "The keynote of Lao Zi's philosophical system is Dao, or the Way, which is the ______, the principle, the substance, and the standard of all things.",
     options: ["byproduct", "origin", "enemy", "shadow"],
     answer: 1,
-    translation: "起源，本源"
+    translation: "起源，本源",
+    questionTranslation: "老子哲学体系的核心是'道'，它是万物的______、原理、本质和标准。",
   },
   {
     id: 13,
@@ -148,7 +155,8 @@ const ALL_QUESTIONS = [
     question: "Lao Zi unveiled the unity of opposites in the world and realized the ______ in things and the transformation of the opposites.",
     options: ["similarities", "harmonies", "contradictions", "identities"],
     answer: 2,
-    translation: "矛盾"
+    translation: "矛盾",
+    questionTranslation: "老子揭示了世间万物的对立统一，认识到事物中的______和对立面的转化。",
   },
   {
     id: 14,
@@ -157,7 +165,8 @@ const ALL_QUESTIONS = [
     question: "In Lao Zi's eyes, Dao takes ______ as its law.",
     options: ["artificiality", "force", "naturalness", "complexity"],
     answer: 2,
-    translation: "自然"
+    translation: "自然",
+    questionTranslation: "在老子看来，道以______为法则。",
   },
   {
     id: 15,
@@ -166,7 +175,8 @@ const ALL_QUESTIONS = [
     question: "As far as government and social order, Lao Zi advocated rule through ______.",
     options: ["strict laws", "military force", "non-action", "absolute monarchy"],
     answer: 2,
-    translation: "无为（而治）"
+    translation: "无为（而治）",
+    questionTranslation: "关于治国和社会秩序，老子倡导通过______来治理。",
   },
 
   // Ch2 Term Translations
@@ -249,7 +259,8 @@ const ALL_QUESTIONS = [
     question: "For self-cultivation, Mencius advocated the method of nourishing the great ______ or the vast moving force, which is produced by the accumulation of righteous deeds.",
     options: ["morale", "wealth", "army", "appetite"],
     answer: 0,
-    translation: "浩然之气，士气"
+    translation: "浩然之气，士气",
+    questionTranslation: "在自我修养方面，孟子主张养______，即由积累义行而产生的浩然之气。",
   },
   {
     id: 22,
@@ -258,7 +269,8 @@ const ALL_QUESTIONS = [
     question: "Zhuang Zi held that man should live a life that suited his ______ nature.",
     options: ["artificial", "social", "original", "modified"],
     answer: 2,
-    translation: "本来的，原始的"
+    translation: "本来的，原始的",
+    questionTranslation: "庄子认为人应该过一种符合自己______本性的生活。",
   },
   {
     id: 23,
@@ -267,7 +279,8 @@ const ALL_QUESTIONS = [
     question: "Universal love, according to him, means to love all the people ______ regardless of their nationality, social status, or relationships.",
     options: ["selectively", "conditionally", "equally", "reluctantly"],
     answer: 2,
-    translation: "平等地"
+    translation: "平等地",
+    questionTranslation: "在他看来，兼爱意味着______地爱所有人，不论其国籍、社会地位或亲属关系。",
   },
   {
     id: 24,
@@ -276,7 +289,8 @@ const ALL_QUESTIONS = [
     question: "Another distinctive feature of Mo Zi's thought was his stress on ______.",
     options: ["mythology", "astrology", "methodology", "theology"],
     answer: 2,
-    translation: "方法论"
+    translation: "方法论",
+    questionTranslation: "墨子思想的另一个显著特点是强调______。",
   },
   {
     id: 25,
@@ -285,7 +299,8 @@ const ALL_QUESTIONS = [
     question: "In fact, the highest ideal of the Legalist School is that the ruler and the ministers, the superior and the inferior, the noble and the humble, all of them obey the ______.",
     options: ["emperor", "laws", "military", "rituals"],
     answer: 1,
-    translation: "法律"
+    translation: "法律",
+    questionTranslation: "实际上，法家的最高理想是君臣、上下、贵贱皆______。",
   },
   {
     id: 26,
@@ -294,7 +309,8 @@ const ALL_QUESTIONS = [
     question: "______ philosophy inspired by Dong Zhongshu claims that Heaven affects human affairs and human behavior finds response in Heaven.",
     options: ["Orthodox", "Rebellious", "Atheistic", "Materialistic"],
     answer: 0,
-    translation: "正统的"
+    translation: "正统的",
+    questionTranslation: "董仲舒所启发的______哲学认为天影响人事，人的行为也会在天那里得到回应。",
   },
   {
     id: 27,
@@ -303,7 +319,8 @@ const ALL_QUESTIONS = [
     question: "Philosophers during the Wei and Jin Dynasties went beyond phenomena to find ______ behind space and time.",
     options: ["illusion", "reality", "emptiness", "darkness"],
     answer: 1,
-    translation: "真实，实在"
+    translation: "真实，实在",
+    questionTranslation: "魏晋时期的哲学家超越现象，在空间和时间背后寻找______。",
   },
   {
     id: 28,
@@ -312,7 +329,8 @@ const ALL_QUESTIONS = [
     question: "During the Song and Ming Dynasties, the rationalistic Confucian philosophy or Neo-Confucianism, which combined Taoism with ______, became influential.",
     options: ["Buddhism", "Islam", "Christianity", "Shinto"],
     answer: 0,
-    translation: "佛教"
+    translation: "佛教",
+    questionTranslation: "宋明时期，理学（新儒学）融合了道家思想和______，产生了深远影响。",
   },
 
   // Ch3 Term Translations
@@ -465,7 +483,8 @@ const ALL_QUESTIONS = [
     question: "Chinese literature refers to literary works from the days before the Qin Dynasty to the year of 1919, and is virtually an unbroken strand undergoing ______ dynastic changes.",
     options: ["classical", "modern", "western", "contemporary"],
     answer: 0,
-    translation: "古典的"
+    translation: "古典的",
+    questionTranslation: "中国文学指从先秦时期到1919年的文学作品，实际上是一条经历______朝代更迭而从未中断的脉络。",
   },
   {
     id: 40,
@@ -474,7 +493,8 @@ const ALL_QUESTIONS = [
     question: "Chinese ______ contributed much to the forming of Chinese religion, especially Religious Taoism and Buddhism.",
     options: ["mythology", "technology", "geography", "astronomy"],
     answer: 0,
-    translation: "神话"
+    translation: "神话",
+    questionTranslation: "中国______对中国宗教的形成贡献巨大，尤其是道教和佛教。",
   },
   {
     id: 41,
@@ -483,7 +503,8 @@ const ALL_QUESTIONS = [
     question: "Of Chinese hero myths, that of ______ is among the most elaborated.",
     options: ["Pangu", "Hou Yi", "Nvwa", "Yu the Great"],
     answer: 1,
-    translation: "后羿"
+    translation: "后羿",
+    questionTranslation: "在中国的英雄神话中，______的神话是最为详尽的之一。",
   },
   {
     id: 42,
@@ -492,7 +513,8 @@ const ALL_QUESTIONS = [
     question: "Among Chinese animal myths, ______ lore is the earliest and most famous of the symbolic animals.",
     options: ["dragon", "phoenix", "tiger", "tortoise"],
     answer: 0,
-    translation: "龙"
+    translation: "龙",
+    questionTranslation: "在中国的动物神话中，______传说最早出现，也是最著名的象征动物。",
   },
   {
     id: 43,
@@ -501,7 +523,8 @@ const ALL_QUESTIONS = [
     question: "Poetry, one of the earliest artistic forms, originated from ______ before the existence of written Chinese.",
     options: ["court music", "folk songs", "religious chants", "epic tales"],
     answer: 1,
-    translation: "民歌"
+    translation: "民歌",
+    questionTranslation: "诗歌是最早的艺术形式之一，在有文字记载之前就起源于______。",
   },
   {
     id: 44,
@@ -510,7 +533,8 @@ const ALL_QUESTIONS = [
     question: "The Book of Songs, as the fountainhead of ______, occupies an important place in the history of Chinese literature.",
     options: ["romanticism", "naturalism", "realism", "surrealism"],
     answer: 2,
-    translation: "现实主义"
+    translation: "现实主义",
+    questionTranslation: "《诗经》作为______的源头，在中国文学史上占有重要地位。",
   },
   {
     id: 45,
@@ -519,7 +543,8 @@ const ALL_QUESTIONS = [
     question: "Qu Yuan created a new literary genre. His new form and his adoption of positive ______ have exerted a lasting influence on Chinese literature.",
     options: ["pessimism", "romanticism", "cynicism", "stoicism"],
     answer: 1,
-    translation: "浪漫主义"
+    translation: "浪漫主义",
+    questionTranslation: "屈原创造了新的文学体裁。他的新形式和积极的______风格对中国文学产生了深远影响。",
   },
   {
     id: 46,
@@ -528,7 +553,8 @@ const ALL_QUESTIONS = [
     question: "Tao's poems featured his vivid and sensitive descriptions of natural scenery, which established him as the creator of the ______ or idyllic poetry in Chinese literature.",
     options: ["urban", "pastoral", "martial", "epic"],
     answer: 1,
-    translation: "田园的"
+    translation: "田园的",
+    questionTranslation: "陶渊明的诗以对自然景色的生动细腻描绘为特色，使他成为中国文学中______诗的创始人。",
   },
   {
     id: 47,
@@ -537,7 +563,8 @@ const ALL_QUESTIONS = [
     question: "The Complete Anthology of Tang Poetry, edited in the early Qin Dynasty, is the ______ collection of Chinese poetry, which collects nearly 50,000 poems by 2,200 poets.",
     options: ["smallest", "newest", "biggest-ever", "most recent"],
     answer: 2,
-    translation: "有史以来最大的"
+    translation: "有史以来最大的",
+    questionTranslation: "清初编撰的《全唐诗》是______的诗歌总集，收录了近2200位诗人的近五万首诗。",
   },
   {
     id: 48,
@@ -546,7 +573,8 @@ const ALL_QUESTIONS = [
     question: "Li Bai, the 'Immortal of Poems', has long been considered the greatest ______ poet in the history of Chinese literature.",
     options: ["realistic", "romantic", "pastoral", "satirical"],
     answer: 1,
-    translation: "浪漫的"
+    translation: "浪漫的",
+    questionTranslation: "李白被称为'诗仙'，一直被认为是中国文学史上最伟大的______诗人。",
   },
   {
     id: 49,
@@ -555,7 +583,8 @@ const ALL_QUESTIONS = [
     question: "Du Fu, the 'Sage of Poems', has been regarded as the greatest ______ poet in the history of Chinese literature.",
     options: ["romantic", "lyrical", "realistic", "epic"],
     answer: 2,
-    translation: "现实主义的"
+    translation: "现实主义的",
+    questionTranslation: "杜甫被称为'诗圣'，被认为是中国文学史上最伟大的______诗人。",
   },
   {
     id: 50,
@@ -564,7 +593,8 @@ const ALL_QUESTIONS = [
     question: "A ______ writer, Bai Juyi wrote nearly 3,000 poems, about 2,000 of which were regulated poems and around 170 were satirical and allegorical.",
     options: ["prolific", "lazy", "unknown", "mediocre"],
     answer: 0,
-    translation: "多产的"
+    translation: "多产的",
+    questionTranslation: "作为一位______作家，白居易写了近三千首诗，其中约两千首是律诗，约一百七十首是讽喻诗。",
   },
   {
     id: 51,
@@ -573,7 +603,8 @@ const ALL_QUESTIONS = [
     question: "Instead of regulated poetry, Song ci poetry could convey more refined and delicate feelings with ______ meter.",
     options: ["regular", "irregular", "fixed", "uniform"],
     answer: 1,
-    translation: "不规则的"
+    translation: "不规则的",
+    questionTranslation: "与律诗不同，宋词能够以______格律传达更加细腻和微妙的情感。",
   },
   {
     id: 52,
@@ -582,7 +613,8 @@ const ALL_QUESTIONS = [
     question: "Liu Yong (1004-1054) made a great contribution to the ci poetry and has been universally acknowledged to be the ______ master of the 'Graceful and Restrained School'.",
     options: ["first", "last", "worst", "only"],
     answer: 0,
-    translation: "第一个"
+    translation: "第一个",
+    questionTranslation: "柳永（1004-1054）对词做出了重大贡献，被公认为'婉约派'的______大家。",
   },
   {
     id: 53,
@@ -591,7 +623,8 @@ const ALL_QUESTIONS = [
     question: "Li Qingzhao, as the China's greatest ______ with erudition and versatile talents, also rose to prominence in this period.",
     options: ["novelist", "poetess", "painter", "sculptor"],
     answer: 1,
-    translation: "女诗人"
+    translation: "女诗人",
+    questionTranslation: "李清照作为中国最伟大的______，博学多才，也在这一时期脱颖而出。",
   },
   {
     id: 54,
@@ -600,7 +633,8 @@ const ALL_QUESTIONS = [
     question: "With his extraordinary ______ style of poetry, Su Shi brought innovations to ci and helped broaden its scope, elevate its status and set up the 'Powerful and Free School'.",
     options: ["gentle", "weak", "vigorous", "passive"],
     answer: 2,
-    translation: "豪放的，有力的"
+    translation: "豪放的，有力的",
+    questionTranslation: "苏轼以他非凡的______诗风，为词带来创新，拓宽了词的题材，提升了词的地位，开创了'豪放派'。",
   },
   {
     id: 55,
@@ -609,7 +643,8 @@ const ALL_QUESTIONS = [
     question: "The Book of History is the most ancient collection of Chinese prose writings with fragments of disconnected and diverse individual ______ papers.",
     options: ["official", "personal", "fictional", "poetic"],
     answer: 0,
-    translation: "官方的"
+    translation: "官方的",
+    questionTranslation: "《尚书》是最古老的中国散文集，收录了一些零散而多样的个人______文书片段。",
   },
   {
     id: 56,
@@ -618,7 +653,8 @@ const ALL_QUESTIONS = [
     question: "Records of the Grand Historian is a first monumental work ______ of history that records Chinese history from the time of the legendary figure Emperor Huang up to Emperor Wu of the Han Dynasty, over a period of about 3,000 years.",
     options: ["general", "regional", "limited", "biased"],
     answer: 0,
-    translation: "通史的，总体的"
+    translation: "通史的，总体的",
+    questionTranslation: "《史记》是第一部______史巨著，记录了从传说中的黄帝到汉武帝约三千年的历史。",
   },
   {
     id: 57,
@@ -627,7 +663,8 @@ const ALL_QUESTIONS = [
     question: "The Literary Mind and the Carving of Dragons written by Liu Xie in parallel prose is the first work of literary ______ in the history of Chinese literature.",
     options: ["criticism", "fiction", "translation", "imitation"],
     answer: 0,
-    translation: "批评"
+    translation: "批评",
+    questionTranslation: "刘勰以骈文写成的《文心雕龙》是中国文学史上第一部文学______著作。",
   },
   {
     id: 58,
@@ -636,7 +673,8 @@ const ALL_QUESTIONS = [
     question: "The basic expressive technique of Romance of the Three Kingdoms is realism, but the ______ arrangement and the portrayal of historical figures are full of romantic color.",
     options: ["plot", "language", "rhyme", "meter"],
     answer: 0,
-    translation: "情节"
+    translation: "情节",
+    questionTranslation: "《三国演义》的基本表现手法是现实主义，但______安排和对历史人物的刻画充满了浪漫主义色彩。",
   },
   {
     id: 59,
@@ -645,7 +683,8 @@ const ALL_QUESTIONS = [
     question: "Water Margin tells the story of the rebellion of the 108 heroes at the end of the Northern Song Dynasty. It is the first novel to deal with the subject matter of ______ uprisings in China.",
     options: ["noble", "peasant", "military", "merchant"],
     answer: 1,
-    translation: "农民"
+    translation: "农民",
+    questionTranslation: "《水浒传》讲述了北宋末年108位英雄起义的故事。它是中国第一部以______起义为题材的小说。",
   },
   {
     id: 60,
@@ -654,7 +693,8 @@ const ALL_QUESTIONS = [
     question: "Journey to the West, by Wu Cheng'en, is an outstanding romantic work replete with ______ tales.",
     options: ["historical", "fantastic", "realistic", "biographical"],
     answer: 1,
-    translation: "奇幻的"
+    translation: "奇幻的",
+    questionTranslation: "吴承恩的《西游记》是一部杰出的浪漫主义作品，充满了______故事。",
   },
   {
     id: 61,
@@ -663,7 +703,8 @@ const ALL_QUESTIONS = [
     question: "Written by Cao Xueqin and Gao E, A Dream of the Red Mansions reached the pinnacle of ______.",
     options: ["failure", "greatest", "mediocrity", "obscurity"],
     answer: 1,
-    translation: "最伟大的（巅峰）"
+    translation: "最伟大的（巅峰）",
+    questionTranslation: "曹雪芹和高鹗所著的《红楼梦》达到了______的巅峰。",
   },
   {
     id: 62,
@@ -672,7 +713,8 @@ const ALL_QUESTIONS = [
     question: "The Injustice Suffered by Dou E praises Dou E's fighting spirit and exposes and condemns the dark society and ______ legal system.",
     options: ["just", "fair", "unjust", "perfect"],
     answer: 2,
-    translation: "不公正的"
+    translation: "不公正的",
+    questionTranslation: "《窦娥冤》赞扬了窦娥的斗争精神，揭露和谴责了黑暗的社会和______的法律制度。",
   },
   {
     id: 63,
@@ -681,7 +723,8 @@ const ALL_QUESTIONS = [
     question: "In the early period of the Qing Dynasty, the most notable ______ were Hong Sheng and Kong Shangren who respectively wrote excellent plays.",
     options: ["novelists", "poets", "playwrights", "painters"],
     answer: 2,
-    translation: "剧作家"
+    translation: "剧作家",
+    questionTranslation: "清初最著名的______是洪昇和孔尚任，他们分别创作了优秀的戏剧。",
   },
 
   // Ch6 Term Translations (20)
@@ -974,7 +1017,8 @@ const ALL_QUESTIONS = [
     question: "The development of bronze casting made it possible for bronze ______ to emerge in the late Shang Dynasty.",
     options: ["inscriptions", "paintings", "sculptures", "pottery"],
     answer: 0,
-    translation: "铭文"
+    translation: "铭文",
+    questionTranslation: "青铜铸造技术的发展，使得______在商代晚期得以出现。",
   },
   {
     id: 85,
@@ -983,7 +1027,8 @@ const ALL_QUESTIONS = [
     question: "Chinese scripts are generally divided into five styles: the seal script, the official script or the clerical script, the cursive script, the ______ script, and the running script.",
     options: ["regular", "italic", "bold", "decorative"],
     answer: 0,
-    translation: "楷书，正规的"
+    translation: "楷书，正规的",
+    questionTranslation: "中国文字一般分为五种书体：篆书、隶书、草书、______书和行书。",
   },
   {
     id: 86,
@@ -992,7 +1037,8 @@ const ALL_QUESTIONS = [
     question: "Wang Xizhi from the Eastern Jin Dynasty has been always honored and worshiped as the 'Sage of Chinese ______' in history.",
     options: ["painting", "calligraphy", "music", "poetry"],
     answer: 1,
-    translation: "书法"
+    translation: "书法",
+    questionTranslation: "东晋的王羲之在历史上一直被尊崇为'中国______之圣'。",
   },
   {
     id: 87,
@@ -1001,7 +1047,8 @@ const ALL_QUESTIONS = [
     question: "Among the numerous ancient Chinese painters, Wu Daozi in the Tang Dynasty was regarded as the 'Sage of Traditional Chinese Painting' and the ______ master of Tang figure painting.",
     options: ["greatest", "youngest", "worst", "oldest"],
     answer: 0,
-    translation: "最伟大的"
+    translation: "最伟大的",
+    questionTranslation: "在众多中国古代画家中，唐代的吴道子被誉为'画圣'和唐代人物画的______大家。",
   },
   {
     id: 88,
@@ -1010,7 +1057,8 @@ const ALL_QUESTIONS = [
     question: "Bada Shanren's paintings look ______ to the public and even to many artists.",
     options: ["beautiful", "strange", "ordinary", "realistic"],
     answer: 1,
-    translation: "奇怪的，奇特的"
+    translation: "奇怪的，奇特的",
+    questionTranslation: "八大山人的画在大众甚至许多艺术家看来都很______。",
   },
   {
     id: 89,
@@ -1019,7 +1067,8 @@ const ALL_QUESTIONS = [
     question: "Singing, acting, ______, and acrobatic fighting are the four artistic means and the four basic skills of Beijing Opera.",
     options: ["dancing", "recitation", "painting", "writing"],
     answer: 1,
-    translation: "念白，朗诵"
+    translation: "念白，朗诵",
+    questionTranslation: "唱、念、______、打是京剧的四种艺术手段和四项基本功。",
   },
   {
     id: 90,
@@ -1028,7 +1077,8 @@ const ALL_QUESTIONS = [
     question: "Kunqu Opera is one of the oldest opera in China and is considered the ______ of many other types of traditional operas.",
     options: ["enemy", "mother", "rival", "copy"],
     answer: 1,
-    translation: "母亲（起源）"
+    translation: "母亲（起源）",
+    questionTranslation: "昆曲是中国最古老的戏曲形式之一，被认为是许多其他传统戏曲的______。",
   },
   {
     id: 91,
@@ -1037,7 +1087,8 @@ const ALL_QUESTIONS = [
     question: "The technique of '______' is usually performed in Sichuan Opera.",
     options: ["face changing", "singing", "dancing", "acrobatics"],
     answer: 0,
-    translation: "变脸"
+    translation: "变脸",
+    questionTranslation: "'______'的技巧通常在川剧中表演。",
   },
   {
     id: 92,
@@ -1046,7 +1097,8 @@ const ALL_QUESTIONS = [
     question: "A skilled crosstalk performer must have clear enunciation, and be able to ______ various kinds of people and situations with sound effect.",
     options: ["imitate", "ignore", "criticize", "avoid"],
     answer: 0,
-    translation: "模仿"
+    translation: "模仿",
+    questionTranslation: "一个熟练的相声演员必须口齿清晰，能够用声音效果______各种人和情境。",
   },
   {
     id: 93,
@@ -1055,7 +1107,8 @@ const ALL_QUESTIONS = [
     question: "Erhu, sometimes known in the West as the 'Chinese ______', is a two-string bowed musical instrument.",
     options: ["violin", "piano", "guitar", "flute"],
     answer: 0,
-    translation: "小提琴"
+    translation: "小提琴",
+    questionTranslation: "二胡在西方有时被称为'中国______'，是一种二弦弓弦乐器。",
   },
 
   // ==================== Chapter 9: Chinese Festivals ====================
@@ -1066,7 +1119,8 @@ const ALL_QUESTIONS = [
     question: "The Spring Festival, also called the Chinese New Year or guonian (keeping the monster nian away), is China's ______ festival which falls on the first day of the first lunar month each year.",
     options: ["least important", "newest", "most important", "most recent"],
     answer: 2,
-    translation: "最重要的"
+    translation: "最重要的",
+    questionTranslation: "春节，也叫中国新年或过年（赶走年兽），是中国______的节日，在每年农历正月初一。",
   },
   {
     id: 95,
@@ -1075,7 +1129,8 @@ const ALL_QUESTIONS = [
     question: "The Lantern Festival, celebrated on the 15th day of the first ______ month, is closely related to the Spring Festival.",
     options: ["solar", "lunar", "calendar", "spring"],
     answer: 1,
-    translation: "农历的"
+    translation: "农历的",
+    questionTranslation: "元宵节，在正月______庆祝，与春节密切相关。",
   },
   {
     id: 96,
@@ -1084,7 +1139,8 @@ const ALL_QUESTIONS = [
     question: "The Qingming Festival is also known as an occasion for ______ and playing on the swing in China.",
     options: ["kite flying", "swimming", "skiing", "shopping"],
     answer: 0,
-    translation: "放风筝"
+    translation: "放风筝",
+    questionTranslation: "清明节在中国也被称为______和荡秋千的时节。",
   },
   {
     id: 97,
@@ -1093,7 +1149,8 @@ const ALL_QUESTIONS = [
     question: "It has become a popular tradition to eat zongzi and drink ______ wine on the 5th day of the 5th lunar month.",
     options: ["grape", "Realgar", "beer", "rice"],
     answer: 1,
-    translation: "雄黄（酒）"
+    translation: "雄黄（酒）",
+    questionTranslation: "在农历五月初五吃粽子和喝______酒已成为流行的传统。",
   },
   {
     id: 98,
@@ -1102,7 +1159,8 @@ const ALL_QUESTIONS = [
     question: "And the 7th day of the 7th lunar month has also been known as China's ______'s Day.",
     options: ["Valentine", "Mother", "Father", "Children"],
     answer: 0,
-    translation: "情人节"
+    translation: "情人节",
+    questionTranslation: "农历七月初七也被称为中国的______节。",
   },
   {
     id: 99,
@@ -1111,7 +1169,8 @@ const ALL_QUESTIONS = [
     question: "The Mid-Autumn Festival falls on the 15th day of the 8th lunar month. It has been believed that the moon is at its fullest and roundest on this day, so the festival is also regarded as an occasion for family ______.",
     options: ["separations", "reunions", "conflicts", "competitions"],
     answer: 1,
-    translation: "团聚"
+    translation: "团聚",
+    questionTranslation: "中秋节在农历八月十五。人们相信这一天月亮最圆最满，所以这个节日也被视为家庭______的时刻。",
   },
   {
     id: 100,
@@ -1120,7 +1179,8 @@ const ALL_QUESTIONS = [
     question: "In ______, the Chinese government designated the Double Ninth Festival as 'Senior Citizen's Day'.",
     options: ["1989", "1999", "2000", "1978"],
     answer: 0,
-    translation: "1989年"
+    translation: "1989年",
+    questionTranslation: "______年，中国政府将重阳节定为'老人节'。",
   },
 
   // ==================== Chapter 10: Food & Drink ====================
@@ -1131,7 +1191,8 @@ const ALL_QUESTIONS = [
     question: "Generally speaking, there are three essential standards by which Chinese cooking is judged, namely, color, aroma, and taste, with ______ being the most important.",
     options: ["color", "aroma", "taste", "presentation"],
     answer: 2,
-    translation: "味道"
+    translation: "味道",
+    questionTranslation: "一般来说，评判中国烹饪有三个基本标准，即色、香、味，其中______最为重要。",
   },
   {
     id: 102,
@@ -1140,7 +1201,8 @@ const ALL_QUESTIONS = [
     question: "Shandong Cuisine, also known as Lucai, is representative of northern China's cooking and its techniques are widely ______ in China.",
     options: ["northeast", "southwest", "overseas", "unknown"],
     answer: 0,
-    translation: "东北的"
+    translation: "东北的",
+    questionTranslation: "山东菜，也叫鲁菜，代表了中国北方的烹饪，其技艺在中国______地区广泛流传。",
   },
   {
     id: 103,
@@ -1149,7 +1211,8 @@ const ALL_QUESTIONS = [
     question: "Sichuan Cuisine, also known as Chuancai, is generally regarded as the most famous of Chinese cuisines, especially for its being spicy and ______.",
     options: ["flavorful", "bland", "sweet", "sour"],
     answer: 0,
-    translation: "香的，有风味的"
+    translation: "香的，有风味的",
+    questionTranslation: "四川菜，也叫川菜，被普遍认为是中国最著名的菜系，尤其以麻辣和______著称。",
   },
   {
     id: 104,
@@ -1158,7 +1221,8 @@ const ALL_QUESTIONS = [
     question: "Chinese people are taught from childhood to 'stand properly, sit properly, and eat properly', and receive training about ______ manners.",
     options: ["table", "dance", "writing", "driving"],
     answer: 0,
-    translation: "餐桌（礼仪）"
+    translation: "餐桌（礼仪）",
+    questionTranslation: "中国人从小就接受'站有站相，坐有坐相，吃有吃相'的教育，并接受______礼仪的培训。",
   },
   {
     id: 105,
@@ -1167,7 +1231,8 @@ const ALL_QUESTIONS = [
     question: "It is commonly recognized that China is the ______ country to grow, produce, and drink tea.",
     options: ["first", "last", "second", "only"],
     answer: 0,
-    translation: "第一个"
+    translation: "第一个",
+    questionTranslation: "人们普遍认为中国是______种植、生产和饮茶的国家。",
   },
   {
     id: 106,
@@ -1176,7 +1241,8 @@ const ALL_QUESTIONS = [
     question: "Drinkers' ______ game is a special method in China to help create more joyous atmosphere while drinking.",
     options: ["wager", "card", "video", "board"],
     answer: 0,
-    translation: "赌酒，酒令"
+    translation: "赌酒，酒令",
+    questionTranslation: "饮酒者的______游戏是中国特有的一种在饮酒时助兴的方法。",
   },
 
   // ==================== 英语.docx — Confucianism & Philosophy (Set 1) ====================
@@ -1187,7 +1253,8 @@ const ALL_QUESTIONS = [
     question: "In ancient China a gentleman was required to study 'six arts (六艺)' which were ritual, music, archery, (carriage) driving, calligraphy and ______.",
     options: ["mathematics", "geography", "history", "philosophy"],
     answer: 0,
-    translation: "数学"
+    translation: "数学",
+    questionTranslation: "在中国古代，君子需要学习'六艺'，即礼、乐、射、御、书、______。",
   },
   {
     id: 108,
@@ -1196,7 +1263,8 @@ const ALL_QUESTIONS = [
     question: "Confucianism is a school of thought represented by Confucius and ______.",
     options: ["Lao Zi", "Mencius", "Zhuang Zi", "Mo Zi"],
     answer: 1,
-    translation: "孟子"
+    translation: "孟子",
+    questionTranslation: "儒家是以孔子和______为代表的一个思想流派。",
   },
   {
     id: 109,
@@ -1205,7 +1273,8 @@ const ALL_QUESTIONS = [
     question: "'The Analects of Confucius' is a collection of about ______ sayings of Confucius and his major disciples, and their comments and answers to questions.",
     options: ["200", "300", "500", "1000"],
     answer: 2,
-    translation: "500条"
+    translation: "500条",
+    questionTranslation: "《论语》是孔子及其主要弟子的约______条言论以及他们的评论和对问题的回答的汇编。",
   },
   {
     id: 110,
@@ -1214,7 +1283,8 @@ const ALL_QUESTIONS = [
     question: "In connection with humanity, Confucius mentioned many other virtues, such as justice, propriety, wisdom, trustworthiness, allegiance, ______, filial piety, fraternal duty and incorruptness.",
     options: ["courage", "forbearance", "ambition", "pride"],
     answer: 1,
-    translation: "宽容，忍耐"
+    translation: "宽容，忍耐",
+    questionTranslation: "与仁相关的，孔子还提到了许多其他美德，如义、礼、智、信、忠、______、孝、悌、廉。",
   },
   {
     id: 111,
@@ -1223,7 +1293,8 @@ const ALL_QUESTIONS = [
     question: "Zhongyong (golden mean) was considered to be the highest level of virtue by Confucius. Zhong (中) doesn't mean '______' but a 'moderate' and 'just right' way in one's words and deeds.",
     options: ["compromise", "center", "extreme", "balance"],
     answer: 0,
-    translation: "妥协，折中"
+    translation: "妥协，折中",
+    questionTranslation: "中庸被孔子视为最高的道德境界。'中'不是'______'，而是一种在言行中'适度'和'恰到好处'的方式。",
   },
   {
     id: 112,
@@ -1232,7 +1303,8 @@ const ALL_QUESTIONS = [
     question: "As to the way to govern a state, on the one hand, Confucius emphasized rule by virtue and ______ government.",
     options: ["human", "strict", "military", "foreign"],
     answer: 0,
-    translation: "仁政（人道的）"
+    translation: "仁政（人道的）",
+    questionTranslation: "关于治国之道，孔子一方面强调以德治国和______政府。",
   },
   {
     id: 113,
@@ -1241,7 +1313,8 @@ const ALL_QUESTIONS = [
     question: "With regard to the way to govern a state, on the other hand, Confucius asserted that the people should be made rich first and then ______.",
     options: ["taxed", "educated", "punished", "ignored"],
     answer: 1,
-    translation: "教育"
+    translation: "教育",
+    questionTranslation: "关于治国之道，另一方面，孔子主张先让人民______，然后再教育他们。",
   },
   {
     id: 114,
@@ -1250,7 +1323,8 @@ const ALL_QUESTIONS = [
     question: "Before Confucius, only the nobility had the right to receive education. He was the first figure in Chinese history to initiate ______ education.",
     options: ["public", "private", "military", "religious"],
     answer: 1,
-    translation: "私人的（私学）"
+    translation: "私人的（私学）",
+    questionTranslation: "在孔子之前，只有贵族有权接受教育。他是中国历史上第一个推行______教育的人。",
   },
   {
     id: 115,
@@ -1259,7 +1333,8 @@ const ALL_QUESTIONS = [
     question: "'I teach everyone without making ______ (有教无类),' Confucius said.",
     options: ["money", "distinction", "effort", "mistakes"],
     answer: 1,
-    translation: "区别"
+    translation: "区别",
+    questionTranslation: "孔子说：'我教每个人，不______（有教无类）。'",
   },
   {
     id: 116,
@@ -1268,7 +1343,8 @@ const ALL_QUESTIONS = [
     question: "Confucius regarded lofty ______, great virtue, love for people, and the 'six arts' as the general principles of education.",
     options: ["ideals", "buildings", "salaries", "mountains"],
     answer: 0,
-    translation: "理想"
+    translation: "理想",
+    questionTranslation: "孔子把崇高的______、伟大的品德、对人的爱和'六艺'作为教育的总原则。",
   },
 
   // ==================== 英语.docx — Lao Zi & Taoism (Set 2) ====================
@@ -1279,7 +1355,8 @@ const ALL_QUESTIONS = [
     question: "The thought of Lao Zi formed the foundation of ______ religion, the most influential indigenous school of religion in China.",
     options: ["Buddhist", "the Taoist", "Confucian", "Islamic"],
     answer: 1,
-    translation: "道教的"
+    translation: "道教的",
+    questionTranslation: "老子的思想构成了______教的基础，这是中国最有影响力的本土宗教流派。",
   },
   {
     id: 118,
@@ -1288,7 +1365,8 @@ const ALL_QUESTIONS = [
     question: "From the relativity of things and concepts Lao Zi continued to draw an important conclusion: '______ is the movement of Dao,' or turning back is how the Way moves.",
     options: ["Progress", "Reversion", "Innovation", "Expansion"],
     answer: 1,
-    translation: "反转，复归"
+    translation: "反转，复归",
+    questionTranslation: "从事物和概念的相对性中，老子进一步得出一个重要结论：'______是道的运动'，即反者道之动。",
   },
   {
     id: 119,
@@ -1297,7 +1375,8 @@ const ALL_QUESTIONS = [
     question: "'Naturalness', as an important concept of Lao Zi's philosophy, refers to a natural state of being, an ______ of following the way of nature.",
     options: ["attitude", "rejection", "ignorance", "theory"],
     answer: 0,
-    translation: "态度"
+    translation: "态度",
+    questionTranslation: "'自然'作为老子哲学的一个重要概念，指的是一种自然的存在状态，一种遵循自然之道的______。",
   },
   {
     id: 120,
@@ -1306,7 +1385,8 @@ const ALL_QUESTIONS = [
     question: "Lao Zi said, 'Dao acts through non-action and it always makes all things possible through ______ with them.'",
     options: ["interference", "non-interference", "opposition", "control"],
     answer: 1,
-    translation: "不干涉"
+    translation: "不干涉",
+    questionTranslation: "老子说：'道常无为而无不为'，即道以______与万物相处而成就一切。",
   },
   {
     id: 121,
@@ -1315,7 +1395,8 @@ const ALL_QUESTIONS = [
     question: "Lao Zi said, 'The greatest virtue is just like water.' He compared his philosophy of '______' to water.",
     options: ["competition", "non-contention", "domination", "accumulation"],
     answer: 1,
-    translation: "不争"
+    translation: "不争",
+    questionTranslation: "老子说：'上善若水'。他把自己'______'的哲学比作水。",
   },
   {
     id: 122,
@@ -1324,7 +1405,8 @@ const ALL_QUESTIONS = [
     question: "The Chinese idiom of 富在知足 can be translated into English like 'Wealth lies in ______.'",
     options: ["greed", "contentment", "expansion", "competition"],
     answer: 1,
-    translation: "知足"
+    translation: "知足",
+    questionTranslation: "中文成语'富在知足'可以翻译成英文为'财富在于______'。",
   },
   {
     id: 123,
@@ -1333,7 +1415,8 @@ const ALL_QUESTIONS = [
     question: "The Chinese idiom of 物极必反 can be translated into English like 'A state or quality, when reaching the extreme, will eventually turn back to its ______ state or quality.'",
     options: ["same", "opposite", "original", "enhanced"],
     answer: 1,
-    translation: "相反的"
+    translation: "相反的",
+    questionTranslation: "中文成语'物极必反'可以翻译成英文为'一种状态或品质到达极端的程度，最终会转回到其______状态或品质'。",
   },
   {
     id: 124,
@@ -1342,7 +1425,8 @@ const ALL_QUESTIONS = [
     question: "The Chinese idiom of 慎终如始 can be translated into English like 'being ______ at the first and in the end.'",
     options: ["careless", "brave", "careful", "lazy"],
     answer: 2,
-    translation: "谨慎的"
+    translation: "谨慎的",
+    questionTranslation: "中文成语'慎终如始'可以翻译成英文为'在开始和结束时都______'。",
   },
   {
     id: 125,
@@ -1351,7 +1435,8 @@ const ALL_QUESTIONS = [
     question: "The Chinese idiom of 福祸相依 can be translated into English like 'Misfortune and ______ follow one after another.'",
     options: ["blessing", "sadness", "anger", "wealth"],
     answer: 0,
-    translation: "福气，好运"
+    translation: "福气，好运",
+    questionTranslation: "中文成语'福祸相依'可以翻译成英文为'不幸与______相继而来'。",
   },
   {
     id: 126,
@@ -1360,7 +1445,8 @@ const ALL_QUESTIONS = [
     question: "The Chinese idiom of 千里之行始于足下 can be translated into English like 'The highest eminence is to be gained ______.'",
     options: ["quickly", "step by step", "by luck", "through others"],
     answer: 1,
-    translation: "一步一步地"
+    translation: "一步一步地",
+    questionTranslation: "中文成语'千里之行始于足下'可以翻译成英文为'最高的卓越来自于______'。",
   },
 
   // ==================== 英语.docx — Various Schools (Set 3) ====================
@@ -1371,7 +1457,8 @@ const ALL_QUESTIONS = [
     question: "Primarily a code of ethics and a system of philosophy, Confucianism has left its ______ on Chinese politics and government, family and society, and art and literature.",
     options: ["mark", "stain", "problem", "question"],
     answer: 0,
-    translation: "印记，影响"
+    translation: "印记，影响",
+    questionTranslation: "儒家主要是一套伦理规范和哲学体系，在中国政治与政府、家庭与社会、艺术与文学上都留下了______。",
   },
   {
     id: 128,
@@ -1380,7 +1467,8 @@ const ALL_QUESTIONS = [
     question: "There is no special word in Chinese meaning 'Confucian' or 'Confucianist,' members of the Confucian School having always been called ru (儒), a word may be translated as '______.'",
     options: ["warrior", "literati", "farmer", "merchant"],
     answer: 1,
-    translation: "文人，学者"
+    translation: "文人，学者",
+    questionTranslation: "中文里没有专门的词表示'Confucian'或'Confucianist'，儒家学派成员一直被称为'儒'，这个词可以翻译为'______'。",
   },
   {
     id: 129,
@@ -1389,7 +1477,8 @@ const ALL_QUESTIONS = [
     question: "It was said that his mother moved house ______ times so that her son could live in a good neighborhood.",
     options: ["two", "three", "five", "ten"],
     answer: 1,
-    translation: "三次（孟母三迁）"
+    translation: "三次（孟母三迁）",
+    questionTranslation: "据说他的母亲搬了______次家，以便让儿子能住在一个好的邻里环境中。",
   },
   {
     id: 130,
@@ -1398,7 +1487,8 @@ const ALL_QUESTIONS = [
     question: "It is the ______ longings that have obscured these moral qualities.",
     options: ["moderate", "natural", "excessive", "minimal"],
     answer: 2,
-    translation: "过度的"
+    translation: "过度的",
+    questionTranslation: "正是______的欲望掩盖了这些道德品质。",
   },
   {
     id: 131,
@@ -1407,7 +1497,8 @@ const ALL_QUESTIONS = [
     question: "All distinctions and oppositions are merely relative. This is Zhuang Zi's famous doctrine of the ______ of all things (齐物论).",
     options: ["hierarchy", "equality", "superiority", "inferiority"],
     answer: 1,
-    translation: "平等"
+    translation: "平等",
+    questionTranslation: "所有的区别和对立都是相对的。这就是庄子著名的______万物论（齐物论）。",
   },
   {
     id: 132,
@@ -1416,7 +1507,8 @@ const ALL_QUESTIONS = [
     question: "His total denial and condemnation of human civilization reflected deeper ______ of the Taoists facing greater chaos during the Warring States Period.",
     options: ["optimism", "pessimism", "enthusiasm", "confidence"],
     answer: 1,
-    translation: "悲观主义"
+    translation: "悲观主义",
+    questionTranslation: "他对人类文明的完全否定和谴责反映了道家面对战国时期更大混乱时的更深层的______。",
   },
   {
     id: 133,
@@ -1425,7 +1517,8 @@ const ALL_QUESTIONS = [
     question: "It is said that Mo Zi at first a follower of Confucianism but later ______ it to found a system of thought of his own.",
     options: ["embraced", "rejected", "modified", "ignored"],
     answer: 1,
-    translation: "拒绝，抛弃"
+    translation: "拒绝，抛弃",
+    questionTranslation: "据说墨子最初是儒家的追随者，但后来______儒家，创立了自己的思想体系。",
   },
   {
     id: 134,
@@ -1434,7 +1527,8 @@ const ALL_QUESTIONS = [
     question: "The ______ School triumphed over the other schools in the 3rd century B. C., and its philosophy was put into strict practice during the brief period of the Qin Dynasty.",
     options: ["Confucian", "Taoist", "Legalist", "Mohist"],
     answer: 2,
-    translation: "法家"
+    translation: "法家",
+    questionTranslation: "______学派在公元前3世纪战胜了其他学派，其哲学在短暂的秦朝时期被严格执行。",
   },
   {
     id: 135,
@@ -1443,7 +1537,8 @@ const ALL_QUESTIONS = [
     question: "Dong Zhongshu (董仲舒) also propounded his doctrine of 'Three Cardinal ______ (三纲)', that is, a sovereign is the guide of his subjects, a father is the guide of his son, and the husband is the guide of his wife.",
     options: ["Laws", "Guides", "Rules", "Virtues"],
     answer: 1,
-    translation: "纲，指导原则"
+    translation: "纲，指导原则",
+    questionTranslation: "董仲舒还提出了他的'三纲'学说，即君为臣______，父为子______，夫为妻______。",
   },
   {
     id: 136,
@@ -1452,7 +1547,8 @@ const ALL_QUESTIONS = [
     question: "Neo-Confucianism was divided into two schools, the School of Principle (理学), and the School of ______ (心学).",
     options: ["Body", "Mind", "Soul", "Nature"],
     answer: 1,
-    translation: "心"
+    translation: "心",
+    questionTranslation: "新儒学（理学）分为两派，即理学和______学。",
   },
 
   // ==================== 英语.docx — Literature & Arts (Set 4) ====================
@@ -1463,7 +1559,8 @@ const ALL_QUESTIONS = [
     question: "Each year on the 15th day of the 8th lunar month, the Chinese celebrate the memory of Chang E's flight to the moon with the _______ Festival.",
     options: ["Spring", "Mid-Autumn", "Dragon Boat", "Lantern"],
     answer: 1,
-    translation: "中秋节"
+    translation: "中秋节",
+    questionTranslation: "每年农历八月十五，中国人以______节来纪念嫦娥奔月的传说。",
   },
   {
     id: 138,
@@ -1472,7 +1569,8 @@ const ALL_QUESTIONS = [
     question: "The Yellow Emperor, who is also called Xuan Yuan (轩辕), is the legendary founder of the Chinese Empire after his victory over _______ and all other tribes.",
     options: ["Shen Nong", "Chi You", "Nvwa", "Fuxi"],
     answer: 1,
-    translation: "蚩尤"
+    translation: "蚩尤",
+    questionTranslation: "黄帝，也被称为轩辕，在击败______和其他部落后，成为中华帝国的传奇开创者。",
   },
   {
     id: 139,
@@ -1481,7 +1579,8 @@ const ALL_QUESTIONS = [
     question: "Basing on folk songs in the state of Chu, the towering genius Qu Yuan, China's _______ known poet, developed these folk songs into a genre of poetry.",
     options: ["first", "second", "last", "only"],
     answer: 0,
-    translation: "第一个（最早的）"
+    translation: "第一个（最早的）",
+    questionTranslation: "在楚国民歌的基础上，天才诗人屈原，中国的______位知名诗人，将这些民歌发展成了一种诗歌体裁。",
   },
   {
     id: 140,
@@ -1490,7 +1589,8 @@ const ALL_QUESTIONS = [
     question: "The first prolific ci poet in China is _______. About 70 of his ci poems have survived.",
     options: ["Li Bai", "Du Fu", "Wen Tingyun", "Su Shi"],
     answer: 2,
-    translation: "温庭筠"
+    translation: "温庭筠",
+    questionTranslation: "中国第一位多产的词人是______。他约七十首词作流传至今。",
   },
   {
     id: 141,
@@ -1499,7 +1599,8 @@ const ALL_QUESTIONS = [
     question: "_______ best works are gracefully fluent, musical, and slightly colloquial, not burdened by allusions or intensity like Wen Tingyun's.",
     options: ["Li Qingzhao's", "Yan Shu's", "Liu Yong's", "Su Shi's"],
     answer: 1,
-    translation: "晏殊的"
+    translation: "晏殊的",
+    questionTranslation: "______最好的作品优雅流畅、富有音乐感、略带口语色彩，不像温庭筠那样充满典故和浓烈的情感。",
   },
   {
     id: 142,
@@ -1508,7 +1609,8 @@ const ALL_QUESTIONS = [
     question: "Jiang Kui modeled himself at first upon Huang Tingjian (黄庭坚), the founder of the _______ School.",
     options: ["Jiangxi", "Zhejiang", "Anhui", "Sichuan"],
     answer: 0,
-    translation: "江西（诗派）"
+    translation: "江西（诗派）",
+    questionTranslation: "姜夔最初以黄庭坚为楷模，黄庭坚是______诗派的创始人。",
   },
   {
     id: 143,
@@ -1517,7 +1619,8 @@ const ALL_QUESTIONS = [
     question: "The first distinguished follower of Sima Qian was Ban Gu (班固), author of the first _______ history in China, The History of the Han Dynasty (《汉书》).",
     options: ["universal", "dynastic", "world", "regional"],
     answer: 1,
-    translation: "断代的（朝代史）"
+    translation: "断代的（朝代史）",
+    questionTranslation: "司马迁的第一位杰出追随者是班固，他是中国第一部______史书《汉书》的作者。",
   },
   {
     id: 144,
@@ -1526,7 +1629,8 @@ const ALL_QUESTIONS = [
     question: "Generally regarded as China's best _______ novel, The Scholars, a book of 55 chapters, was written by Wu Jingzi (吴敬梓).",
     options: ["romantic", "satirical", "historical", "martial"],
     answer: 1,
-    translation: "讽刺的"
+    translation: "讽刺的",
+    questionTranslation: "被普遍认为是中国最好的______小说，《儒林外史》共55回，由吴敬梓所著。",
   },
   {
     id: 145,
@@ -1535,7 +1639,8 @@ const ALL_QUESTIONS = [
     question: "One more point worthy of mention is that the so-called _______________ include Romance of the Three Kingdoms, Water Margin, Journey to the West, and A Dream of the Red Mansions.",
     options: ["Four Great Classical Novels", "Three Great Poems", "Five Classics", "Six Arts"],
     answer: 0,
-    translation: "四大名著"
+    translation: "四大名著",
+    questionTranslation: "另外值得一提的是所谓的______包括《三国演义》、《水浒传》、《西游记》和《红楼梦》。",
   },
   {
     id: 146,
@@ -1544,7 +1649,8 @@ const ALL_QUESTIONS = [
     question: "Unlike Shen Jing, _______ and his followers valued literary quality over strict musical form. He left behind him four Romance plays.",
     options: ["Guan Hanqing", "Tang Xianzu", "Wang Shifu", "Ma Zhiyuan"],
     answer: 1,
-    translation: "汤显祖"
+    translation: "汤显祖",
+    questionTranslation: "与沈璟不同，______和他的追随者重视文学质量甚于严格的音乐形式。他留下了四部传奇剧。",
   },
 
   // ==================== 英语.docx — Mixed Topics (Set 5) ====================
@@ -1555,7 +1661,8 @@ const ALL_QUESTIONS = [
     question: "The Chinese written language is one of the various world languages with the longest history. Tradition has it that legendary kings or heroes, such as Shen Nong (神农), Huang Di (黄帝), Shao Hao (少昊), Yao (尧) and ______ all created different kinds of writing.",
     options: ["Cang Jie", "Sun Wukong", "Lao Zi", "Mencius"],
     answer: 0,
-    translation: "仓颉"
+    translation: "仓颉",
+    questionTranslation: "中文书面语是世界上历史最悠久的语言之一。传说中，神农、黄帝、少昊、尧和______等传奇帝王或英雄都创造了不同种类的文字。",
   },
   {
     id: 148,
@@ -1564,7 +1671,8 @@ const ALL_QUESTIONS = [
     question: "The Marquis Yi chime bells consist of ______ bells arranged in three vows.",
     options: ["36", "50", "65", "99"],
     answer: 2,
-    translation: "65（件）"
+    translation: "65（件）",
+    questionTranslation: "曾侯乙编钟由______个铜钟组成，分三排排列。",
   },
   {
     id: 149,
@@ -1573,7 +1681,8 @@ const ALL_QUESTIONS = [
     question: "Of many legends about the Mid-Autumn Festival, the story concerning Hou Yi and ______ is perhaps the most popular.",
     options: ["Chang E", "Nvwa", "Xi Wangmu", "Guanyin"],
     answer: 0,
-    translation: "嫦娥"
+    translation: "嫦娥",
+    questionTranslation: "在关于中秋节的众多传说中，关于后羿和______的故事可能是最流行的。",
   },
   {
     id: 150,
@@ -1582,7 +1691,8 @@ const ALL_QUESTIONS = [
     question: "A famous painter of the Jin Dynasty ______ was the first to put forward the theory of 'making the form show the spirit.'",
     options: ["Wu Daozi", "Gu Kaizhi", "Wang Wei", "Zhang Zeduan"],
     answer: 1,
-    translation: "顾恺之"
+    translation: "顾恺之",
+    questionTranslation: "东晋著名画家______首次提出了'以形写神'的理论。",
   },
   {
     id: 151,
@@ -1591,7 +1701,8 @@ const ALL_QUESTIONS = [
     question: "______ was the first person to introduce erhu (二胡), a two-stringed musical instrument, into the Beijing Opera orchestra.",
     options: ["Mei Lanfang", "Cheng Yanqiu", "Shang Xiaoyun", "Xun Huisheng"],
     answer: 0,
-    translation: "梅兰芳"
+    translation: "梅兰芳",
+    questionTranslation: "______是第一个把二胡引入京剧乐队的人。",
   },
   {
     id: 152,
@@ -1600,7 +1711,8 @@ const ALL_QUESTIONS = [
     question: "The Double Seventh Festival falling on the 7th day of the 7th lunar month is a traditional Chinese festival replete with ______.",
     options: ["romance", "fear", "anger", "sadness"],
     answer: 0,
-    translation: "浪漫（爱情）"
+    translation: "浪漫（爱情）",
+    questionTranslation: "七夕节在农历七月初七，是一个充满______的中国传统节日。",
   },
   {
     id: 153,
@@ -1609,7 +1721,8 @@ const ALL_QUESTIONS = [
     question: "Legend says that when the news of Qu Yuan's drowning spread, the people from the State of Chu gathered along the banks of the ______ River to pay their respect.",
     options: ["Yangtze", "Yellow", "Miluo", "Pearl"],
     answer: 2,
-    translation: "汨罗江"
+    translation: "汨罗江",
+    questionTranslation: "传说屈原投江的消息传开后，楚国人民聚集在______江边表达敬意。",
   },
   {
     id: 154,
@@ -1618,7 +1731,8 @@ const ALL_QUESTIONS = [
     question: "Tradition has it that ______ was the first known master of the regular script on which his enormous reputation was built.",
     options: ["Wang Xizhi", "Zhong Yao", "Yan Zhenqing", "Ouyang Xun"],
     answer: 1,
-    translation: "钟繇"
+    translation: "钟繇",
+    questionTranslation: "传统认为______是第一位已知的楷书大师，他的巨大声誉就建立在此基础上。",
   },
   {
     id: 155,
@@ -1627,7 +1741,8 @@ const ALL_QUESTIONS = [
     question: "The custom of hanging lanterns dates back to the early ______ Dynasty.",
     options: ["Tang", "Han", "Song", "Ming"],
     answer: 1,
-    translation: "汉朝"
+    translation: "汉朝",
+    questionTranslation: "挂灯笼的习俗可以追溯到______。",
   },
   {
     id: 156,
@@ -1636,7 +1751,8 @@ const ALL_QUESTIONS = [
     question: "The ______ color, bright flames, and exploding were what nian feared the most.",
     options: ["blue", "yellow", "red", "green"],
     answer: 2,
-    translation: "红色"
+    translation: "红色",
+    questionTranslation: "年兽最害怕的是______的颜色、明亮的火焰和爆炸声。",
   },
   {
     id: 157,
@@ -1645,7 +1761,8 @@ const ALL_QUESTIONS = [
     question: "In China, people hold the belief that a food ______ is much better than a medicine in fortifying one's health.",
     options: ["tonic", "poison", "waste", "snack"],
     answer: 0,
-    translation: "补品，滋补的"
+    translation: "补品，滋补的",
+    questionTranslation: "在中国，人们相信食______胜于药补，以此来强健身体。",
   },
   {
     id: 158,
@@ -1654,7 +1771,8 @@ const ALL_QUESTIONS = [
     question: "Some of the best dishes of Jiangsu Cuisine are ______ Salted Dried Duck, Clear Crab and Pork Meatballs, Triple Combo Duck, Crystal Pork, etc.",
     options: ["Beijing", "Jinling", "Shanghai", "Guangzhou"],
     answer: 1,
-    translation: "金陵（南京）"
+    translation: "金陵（南京）",
+    questionTranslation: "江苏菜的一些最佳菜肴有______盐水鸭、清炖蟹粉狮子头、三套鸭、水晶肴肉等。",
   },
   {
     id: 159,
@@ -1663,7 +1781,8 @@ const ALL_QUESTIONS = [
     question: "Don't stick your chopsticks ______ in the rice bowl because, in most part of China, it indicates the food for the dead.",
     options: ["upright", "sideways", "flat", "broken"],
     answer: 0,
-    translation: "竖直地"
+    translation: "竖直地",
+    questionTranslation: "不要把筷子______插在饭碗里，因为在中国大部分地区，这代表着给死者的食物。",
   },
   {
     id: 160,
@@ -1672,7 +1791,8 @@ const ALL_QUESTIONS = [
     question: "______ tea sits half way between green tea and black tea because it is semi-fermented.",
     options: ["Jasmine", "Oolong", "Chrysanthemum", "Chamomile"],
     answer: 1,
-    translation: "乌龙茶"
+    translation: "乌龙茶",
+    questionTranslation: "______茶介于绿茶和红茶之间，因为它是半发酵的。",
   },
   {
     id: 161,
@@ -1681,6 +1801,7 @@ const ALL_QUESTIONS = [
     question: "At a wedding banquet, the new couple must propose toasts to their parents and the guests present. They must also drink ______-crossed wine (交杯酒), which will bless them with a hundred years of happy marriage.",
     options: ["arm", "leg", "hand", "head"],
     answer: 0,
-    translation: "手臂（交杯酒）"
+    translation: "手臂（交杯酒）",
+    questionTranslation: "在婚宴上，新婚夫妇必须向父母和在场宾客敬酒。他们还必须喝______酒（交杯酒），这祝福他们百年好合。",
   }
 ];
